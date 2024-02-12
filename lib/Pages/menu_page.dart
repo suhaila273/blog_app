@@ -1,4 +1,5 @@
 import 'package:blog_app_frontend/Pages/add_post.dart';
+import 'package:blog_app_frontend/Pages/view_post.dart';
 import 'package:flutter/material.dart';
 
 class MenuPostPage extends StatelessWidget {
@@ -19,6 +20,7 @@ class MenuPostPage extends StatelessWidget {
               }, child: Text("ADD POST")),
               SizedBox(height: 20,),
               ElevatedButton(onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ViewPost()));
 
               }, child: Text("VIEW ALL POST"))
             ],
