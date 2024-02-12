@@ -25,6 +25,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(),
       body: Container(
+        padding: EdgeInsets.all(10),
         child: Column(
           children: [
             SizedBox(height: 15,),
