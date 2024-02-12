@@ -1,3 +1,4 @@
+import 'package:blog_app_frontend/Services/user_service.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -16,7 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController email1=new TextEditingController();
   TextEditingController password1=new TextEditingController();
 
-  void SendValues(){
+  void SendValues() async{
     print("name :"+name1.text);
     print("age :"+age1.text);
     print("mobile :"+mobile1.text);
@@ -24,13 +25,31 @@ class _RegisterPageState extends State<RegisterPage> {
     print("pincode :"+pincode1.text);
     print("email :"+email1.text);
     print("password :"+password1.text);
+
+  final response=await BlogApiService().sendData(name1.text,
+      age1.text,
+      mobile1.text,
+      address1.text,
+      pincode1.text,
+      email1.text,
+      password1.text);
+
+  if(response["status"]=="success"){
+    print("successfuly registerd");
+  }
+  else{
+    print("Error");
+  }
+    print(response);
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: Text("Sign Up here!"),
+        ),
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(10),
