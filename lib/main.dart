@@ -1,3 +1,4 @@
+import 'package:blog_app_frontend/Pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -8,6 +9,8 @@ void main(){
 
    @override
    Widget build(BuildContext context) {
-     return MaterialApp();
+     return MaterialApp(
+       home: LoginPage(),
+     );
    }
  }
