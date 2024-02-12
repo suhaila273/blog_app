@@ -18,6 +18,8 @@ class _LoginPageState extends State<LoginPage> {
   void SendValue(){
     print("email :"+email1.text);
     print("password : "+pass1.text);
+
+
   }
 
   @override
