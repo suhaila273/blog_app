@@ -1,6 +1,8 @@
+import 'package:blog_app_frontend/Pages/menu_page.dart';
 import 'package:blog_app_frontend/Pages/register_page.dart';
 import 'package:blog_app_frontend/Services/user_service.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -22,10 +24,15 @@ class _LoginPageState extends State<LoginPage> {
 
     final response =await BlogApiService().loginApi(email1.text, pass1.text);
     if(response["status"]=="success"){
-      print("successfuly login");
+      String userId=response["userdata"]["_id"].toString();
+      print("successfuly login :"+userId);
+      SharedPreferences.setMockInitialValues({});
+      SharedPreferences preferences=await SharedPreferences.getInstance();
+      preferences.setString("userId", userId);
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>MenuPostPage()));
     }
     else if(response["status"]=="invalid email id"){
-      print("inavlid email id");
+      print("invalid email id");
     }
     else
       {
